@@ -352,26 +352,11 @@ PORT=29500 tools/dist_test.sh configs/gisr/mocolsk/mocolsk_x8_4xb1-10k_groklst.p
 
 
 ## BUG LOG
-When running dist_test.sh or test.py, you may encounter the following issue:
+1. [Mismatch Between State Dictionary Parameters and the Model Architecture During Checkpoint Loading.](./docs/bug_log.md)
 
-```shell
-"The model and loaded state dict do not match exactly
+## Supported Algorithms
+[Downscaling / Super-Resolution Algorithms in GrokLST Toolkit](./docs/supported_algorithms.md)
 
-unexpected key in source state_dict: generator.module.conv1.weight, generator.module.conv1.bias, generator.module.conv2.weight, generator.module.conv2.bias, generator.module.conv3.weight, generator.module.conv3.bias
-
-missing keys in source state_dict: generator.conv1.weight, generator.conv1.bias, generator.conv2.weight, generator.conv2.bias, generator.conv3.weight, generator.conv3.bias"
-```
-
-Problem Analysis:
-- Initially, you might suspect that the network model and the state_dict saved in the checkpoint do not match, but this is not the case.
-- The issue is mainly caused by the parameter revise_keys=[(r'^module//.', '')] in the function _load_checkpoint_to_model (around line 585) in mmengine.runner.checkpoint.py.
-- '^module//.' is a regular expression pattern that aims to replace keys like "generator.module.conv1.weight" with "generator.conv1.weight", effectively removing "module." from "generator.module.conv1.weight".
-- However, since "generator.module.conv1.weight" does not begin with "module.", it doesn't match the pattern '^module//.'.
-
-Solution:
-- In the mmengine.runner.runner.py, within the load_checkpoint function of the Runner class (around line 2111), replace the parameter revise_keys=[(r'^module//.', '')] with revise_keys=[(r'/bmodule.', '')]. This change ensures that keys like "generator.module.conv1.weight" will correctly be replaced with "generator.conv1.weight", effectively removing "module.".
-
-This solution should help resolve the key mismatch when loading checkpoints.
 <!-- ## Get Started
 
 Please see [get_started.md](https://github.com/open-mmlab/mmagic/blob/main/docs/en/get_started/overview.md) for the basic usage of GrokLST toolkit. -->
