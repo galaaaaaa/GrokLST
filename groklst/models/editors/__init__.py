@@ -1,10 +1,11 @@
 # GDSR
 from .mocolsk import MoCoLSKNet
-from .mocolsk_abs import MoCoLSKNetABS
-from .mocolsk_sar import OpticalSARMoCoLSKNet
-from .dyfexnet import DyFeXNet
-from .dyfexnet_mask import DyFeXNetMask
-from .dyfexnet_interlace import DyFeXNetInterlace
+
+# from .mocolsk_abs import MoCoLSKNetABS
+# from .mocolsk_sar import OpticalSARMoCoLSKNet
+# from .dyfexnet import DyFeXNet
+# from .dyfexnet_mask import DyFeXNetMask
+# from .dyfexnet_interlace import DyFeXNetInterlace
 from .dct import DCTNet  # 2022
 from .dkn import DKN, FDKN  # 2021
 from .fdsr import FDSR  # 2021
@@ -27,6 +28,7 @@ from .dgf import DGF  # CVPR-2018 big loss
 from .dmsg import DMSG  # ECCV-2016 big loss
 from .codon import CODONNet8, CODONNet4  # IJCV-2022
 
+# from .nirnaf import NIRNAFNet
 
 # SISR
 from .srcnn import SRCNN
@@ -34,6 +36,7 @@ from .rdn import RDN
 from .edsr import EDSR
 from .swinir import SwinIR
 
+# from .srcnn2 import SRCNN
 # new sisr
 from .act import ACT
 from .ngswin import NGswin
@@ -52,17 +55,18 @@ from .cfgn import CFGN
 from .FEN import FENet
 from .haunet import HAUNet
 from .dctlsa import DCTLSA
-
 from .dbpn import DBPN
+
+
+# new added Transformer-based
+from .dat import DAT
+from .srformer import SRFormer
+from .dlgsanet import DLGSANet
+from .hit_sr import HiT_SIR, HiT_SNG, HiT_SRF
 
 __all__ = [
     # GDSR
     "MoCoLSKNet",
-    "OpticalSARMoCoLSKNet",
-    "MoCoLSKNetABS",
-    "DyFeXNet",
-    "DyFeXNetMask",
-    "DyFeXNetInterlace",
     "SUFTNet",
     "DCTNet",
     "DKN",
@@ -109,4 +113,12 @@ __all__ = [
     "HAUNet",
     "DCTLSA",
     "DBPN",
+    # "NIRNAFNet",
+    # new added Transformer-based
+    "DAT",
+    "SRFormer",
+    "DLGSANet",
+    'HiT_SIR',
+    "HiT_SNG",
+    "HiT_SRF",
 ]
