@@ -94,9 +94,11 @@ pip install -U ninja scikit-image --no-input
 pip install kornia==0.6.5 # 0.7.1
 pip install albumentations==1.3.1
 pip install diffusers==0.24.0
+pip install huggingface_hub==0.25.2
+pip install cupy-cuda12x
 ```
 
-### Step 4: Install `groklst`
+<!-- ### Step 4: Install `groklst`
 
 ```shell
 python setup.py develop
@@ -107,7 +109,7 @@ python setup.py develop
 ```shell
 git clone git@github.com:GrokCV/GrokLST.git
 cd GrokLST
-```
+``` -->
 
 
 ## Folder Introduction
