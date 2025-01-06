@@ -121,7 +121,6 @@ GrokLST
     ├── configs  (Configuration files)
     ├── data (Datasets)
     ├── groklst (Core code)
-    # ├── requirements (Environment dependencies)
     ├── tools (Training and testing tools)
     ├── work_dirs (Stores models, log files, etc.)
 ```
