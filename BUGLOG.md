@@ -16,4 +16,4 @@ missing keys in source state_dict: generator.conv1.weight, generator.conv1.bias,
 - 但是，由于 "generator.module.conv1.weight" 并不是以 "module." 开头，即不匹配模式 '^module//.'；
 
 解决方法：
-- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module//.','')]):"(大概 2111 行) 替换为"revise_keys=[(r'/bmodule.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
+- mmengine.runner.runner.py 中类 Runner 的函数 load_checkpoint 中的参数 "revise_keys=[(r'^module//.','')]):"(大概 2111 行) 替换为"revise_keys = [(r'\bmodule\.', '')]):"，实现将类似 "generator.module.conv1.weight" 改为 "generator.conv1.weight" ，即去掉 "generator.module.conv1.weight" 中的 "module."!
